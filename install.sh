@@ -9,4 +9,5 @@ echo "Cloning omadots..."
 git clone --depth 1 "$REPO" "$TMPDIR"
 
 echo "Copying config to ~/.config..."
-cp -r "$TMPDIR/config/." "$HOME/.config/"
+mkdir -p "$HOME/.config"
+cp -R "$TMPDIR/config/"* "$HOME/.config/"
