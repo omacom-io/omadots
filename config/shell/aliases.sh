@@ -1,0 +1,35 @@
+# Eza (https://eza.rocks/)
+alias ls='eza -lh --group-directories-first --icons=auto'
+alias lsa='ls -a'
+
+# Smart cd (https://github.com/ajeetdsouza/zoxide)
+alias cd="zd"
+zd() {
+  if [[ $# -eq 0 ]]; then
+    builtin cd ~ && return
+  elif [[ -d $1 ]]; then
+    builtin cd "$1"
+  else
+    z "$@" && printf "%s " "->" && pwd || echo "Error: Directory not found"
+  fi
+}
+
+# Directories
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# Tools
+alias c='opencode'
+alias cx='claude --permission-mode=plan --allow-dangerously-skip-permissions'
+alias d='docker'
+alias lzd='lazydocker'
+alias r='rails'
+alias v='vim'
+alias t='tmux attach || tmux new -s Work'
+n() { if [[ $# -eq 0 ]]; then nvim .; else nvim "$@"; fi; }
+
+# Git
+alias g='git'
+alias gcm='git commit -m'
+alias gcam='git commit -a -m'
