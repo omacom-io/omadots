@@ -2,6 +2,8 @@
 set -euo pipefail
 
 REPO="https://github.com/omacom-io/omadots.git"
+TIMESTAMP="$(date +%Y%m%d%H%M%S)"
+
 TMPDIR="$(mktemp -d)"
 trap 'rm -rf "$TMPDIR"' EXIT
 
@@ -12,15 +14,20 @@ section() {
 section "Cloning omadots..."
 git clone --depth 1 "$REPO" "$TMPDIR"
 
-if [[ ! -d $HOME/.config/nvim ]]; then
-  section "Installing LazyVim..."
-  git clone https://github.com/LazyVim/starter ~/.config/nvim
-  rm -rf ~/.config/nvim/.git
-fi
+section "Installing LazyVim..."
+[[ -d "$HOME/.config/nvim" ]] && mv "$HOME/.config/nvim" "$HOME/.config/nvim.bak$TIMESTAMP"
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
 
 section "Copying config to ~/.config..."
 mkdir -p "$HOME/.config"
-cp -Rf "$TMPDIR/config/"* "$HOME/.config/"
+cd "$TMPDIR/config"
+find . -type f | while read -r file; do
+  target="$HOME/.config/$file"
+  mkdir -p "$(dirname "$target")"
+  [[ -f "$target" ]] && mv "$target" "$target.bak$TIMESTAMP"
+  cp "$file" "$target"
+done
 
 section "Configuring git access..."
 
