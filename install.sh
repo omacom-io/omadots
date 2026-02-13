@@ -21,7 +21,7 @@ echo " ▄██████▄    ▄▄▄▄███▄▄▄▄      ▄█
 ███    ███ ███   ███   ███   ███    ███ ███   ▄███ ███    ███     ███        ▄█    ███
  ▀██████▀   ▀█   ███   █▀    ███    █▀  ████████▀   ▀██████▀     ▄████▀    ▄████████▀ "
 
-section "Cloning omadots..."
+section "Cloning..."
 git clone --depth 1 "$REPO" "$TMPDIR"
 
 section "Installing LazyVim..."
