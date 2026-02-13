@@ -39,13 +39,12 @@ find . -type f | while read -r file; do
 done
 
 section "Configuring git access..."
-
 if ! git config --global user.name &>/dev/null; then
   printf "Git name: "
   read -r GIT_NAME </dev/tty
   git config --global user.name "$GIT_NAME"
 else
-  echo "Git name already set"
+  echo "✓ Git name already set"
 fi
 
 if ! git config --global user.email &>/dev/null; then
@@ -53,5 +52,5 @@ if ! git config --global user.email &>/dev/null; then
   read -r GIT_EMAIL </dev/tty
   git config --global user.email "$GIT_EMAIL"
 else
-  echo "Git name already set"
+  echo "✓ Git email already set"
 fi
