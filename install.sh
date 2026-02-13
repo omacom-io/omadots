@@ -19,7 +19,7 @@ section "Installing LazyVim..."
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
-section "Copying config to ~/.config..."
+section "Copying dots to ~/.config..."
 mkdir -p "$HOME/.config"
 cd "$TMPDIR/config"
 find . -type f | while read -r file; do
