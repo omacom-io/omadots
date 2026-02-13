@@ -1,3 +1,4 @@
+source "$HOME/.config/shell/envs"
 source "$HOME/.config/shell/aliases"
 source "$HOME/.config/shell/functions"
 source "$HOME/.config/shell/inits"
