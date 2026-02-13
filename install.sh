@@ -10,4 +10,4 @@ git clone --depth 1 "$REPO" "$TMPDIR"
 
 echo "Copying config to ~/.config..."
 mkdir -p "$HOME/.config"
-cp -R "$TMPDIR/config/"* "$HOME/.config/"
+cp -Rf "$TMPDIR/config/"* "$HOME/.config/"
