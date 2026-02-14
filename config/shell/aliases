@@ -21,7 +21,7 @@ alias ....='cd ../../..'
 
 # Tools
 alias c='opencode'
-alias cx='claude --permission-mode=plan --allow-dangerously-skip-permissions'
+alias cx='printf "\033[2J\033[3J\033[H" && claude --permission-mode=plan --allow-dangerously-skip-permissions'
 alias d='docker'
 alias lzd='lazydocker'
 alias r='rails'
