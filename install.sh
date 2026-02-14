@@ -40,7 +40,7 @@ EOF
 bash)
   echo 'source ~/.config/shell/all' >"$HOME/.bashrc"
   echo '. ~/.bashrc' >"$HOME/.bash_profile"
-  ln -s "$HOME/.config/shell/inputrc" "$HOME/.inputrc"
+  ln -snf "$HOME/.config/shell/inputrc" "$HOME/.inputrc"
   echo "✓ Bash"
   ;;
 esac
