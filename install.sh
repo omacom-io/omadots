@@ -13,19 +13,12 @@ section "Cloning Omadots..."
 git clone --depth 1 "$REPO" "$TMPDIR"
 
 section "Installing LazyVim..."
-[[ -d "$HOME/.config/nvim" ]] && mv "$HOME/.config/nvim" "$HOME/.config/nvim.bak"
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
 section "Copying dots to ~/.config..."
 mkdir -p "$HOME/.config"
-cd "$TMPDIR/config"
-find . -type f | while read -r file; do
-  target="$HOME/.config/$file"
-  mkdir -p "$(dirname "$target")"
-  [[ -f "$target" ]] && mv "$target" "$target.bak"
-  cp "$file" "$target"
-done
+cp -rf "$TMPDIR/config/." "$HOME/.config/"
 
 section "Configuring shell..."
 case "$(basename "$SHELL")" in
