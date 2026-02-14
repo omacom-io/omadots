@@ -13,7 +13,7 @@ section "Cloning Omadots..."
 git clone --depth 1 "$REPO" "$TMPDIR"
 
 section "Installing LazyVim..."
-rm -rf .config/nvim
+rm -rf ~/.config/nvim
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
