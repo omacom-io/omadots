@@ -20,6 +20,9 @@ rm -rf ~/.config/nvim/.git
 section "Copying dots to ~/.config..."
 mkdir -p "$HOME/.config"
 cp -rf "$TMPDIR/config/." "$HOME/.config/"
+for dir in "$TMPDIR/config"/*/; do
+  echo "✓ $(basename "$dir")"
+done
 
 section "Configuring shell..."
 case "$(basename "$SHELL")" in
