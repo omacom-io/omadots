@@ -29,6 +29,23 @@ find . -type f | while read -r file; do
   cp "$file" "$target"
 done
 
+section "Configuring shell..."
+CURRENT_SHELL="$(basename "$SHELL")"
+
+if [[ "$CURRENT_SHELL" == "zsh" ]]; then
+  if [[ -f "$HOME/.zshrc" && ! -L "$HOME/.zshrc" ]]; then
+    mv "$HOME/.zshrc" "$HOME/.zshrc.bak$TIMESTAMP"
+  fi
+  ln -sf "$HOME/.config/shell/zshrc" "$HOME/.zshrc"
+  echo "✓ Linked zshrc for Zsh"
+elif [[ "$CURRENT_SHELL" == "bash" ]]; then
+  if [[ -f "$HOME/.inputrc" && ! -L "$HOME/.inputrc" ]]; then
+    mv "$HOME/.inputrc" "$HOME/.inputrc.bak$TIMESTAMP"
+  fi
+  ln -sf "$HOME/.config/shell/inputrc" "$HOME/.inputrc"
+  echo "✓ Linked inputrc for Bash"
+fi
+
 section "Configuring git access..."
 if ! git config --global user.name &>/dev/null; then
   printf "Git name: "

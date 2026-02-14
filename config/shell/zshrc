@@ -1,0 +1,70 @@
+# Zsh configuration matching inputrc settings
+# This file provides equivalent functionality to readline's inputrc
+
+# Use emacs key bindings
+bindkey -e
+
+# Meta/UTF-8 settings
+setopt COMBINING_CHARS
+
+# Case-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=* l:|=*'
+
+# Show all completions immediately without needing to press tab twice
+setopt MENU_COMPLETE
+setopt AUTO_MENU
+
+# Arrow keys: history search matching current input
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
+bindkey "^[[C" forward-char
+bindkey "^[[D" backward-char
+
+# Mark symlinked directories (add trailing slash)
+setopt CHASE_LINKS
+
+# Do not autocomplete hidden files unless explicitly starting with dot
+zstyle ':completion:*' match-hidden-files off
+
+# Show all completions at once (no paging)
+zstyle ':completion:*' list-prompt ''
+zstyle ':completion:*' select-prompt ''
+
+# Show extra file information when completing (like ls -F)
+zstyle ':completion:*' file-list all
+
+# Smart completion - look at text after cursor
+setopt COMPLETE_IN_WORD
+setopt ALWAYS_TO_END
+
+# Colored completion listings
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+
+# Additional zsh-specific enhancements
+# Share history between sessions
+setopt SHARE_HISTORY
+
+# Append to history file, don't overwrite
+setopt APPEND_HISTORY
+
+# Don't record duplicate commands
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+
+# Remove superfluous blanks before recording
+setopt HIST_REDUCE_BLANKS
+
+# Don't execute immediately upon history expansion
+setopt HIST_VERIFY
+
+# Extended globbing
+setopt EXTENDED_GLOB
+
+# Don't beep on errors
+unsetopt BEEP
+
+# Allow comments in interactive shells
+setopt INTERACTIVE_COMMENTS
+
+# Change directory by typing directory name
+setopt AUTO_CD
