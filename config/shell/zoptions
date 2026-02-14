@@ -1,6 +1,3 @@
-# Zsh configuration matching inputrc settings
-# This file provides equivalent functionality to readline's inputrc
-
 # Use emacs key bindings
 bindkey -e
 

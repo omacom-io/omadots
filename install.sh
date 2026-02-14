@@ -30,21 +30,22 @@ find . -type f | while read -r file; do
 done
 
 section "Configuring shell..."
-CURRENT_SHELL="$(basename "$SHELL")"
-
-if [[ "$CURRENT_SHELL" == "zsh" ]]; then
-  if [[ -f "$HOME/.zshrc" && ! -L "$HOME/.zshrc" ]]; then
-    mv "$HOME/.zshrc" "$HOME/.zshrc.bak$TIMESTAMP"
-  fi
-  ln -sf "$HOME/.config/shell/zshrc" "$HOME/.zshrc"
-  echo "✓ Linked zshrc for Zsh"
-elif [[ "$CURRENT_SHELL" == "bash" ]]; then
-  if [[ -f "$HOME/.inputrc" && ! -L "$HOME/.inputrc" ]]; then
-    mv "$HOME/.inputrc" "$HOME/.inputrc.bak$TIMESTAMP"
-  fi
-  ln -sf "$HOME/.config/shell/inputrc" "$HOME/.inputrc"
-  echo "✓ Linked inputrc for Bash"
-fi
+case "$(basename "$SHELL")" in
+zsh)
+  cat >"$HOME/.zshrc" <<'EOF'
+source ~/.config/shell/all
+source ~/.config/shell/zoptions
+EOF
+  echo '. ~/.zshrc' >"$HOME/.zprofile"
+  echo "✓ Zsh"
+  ;;
+bash)
+  echo 'source ~/.config/shell/all' >"$HOME/.bashrc"
+  echo '. ~/.bashrc' >"$HOME/.bash_profile"
+  ln -s "$HOME/.config/shell/inputrc" "$HOME/.inputrc"
+  echo "✓ Bash"
+  ;;
+esac
 
 section "Configuring git access..."
 if ! git config --global user.name &>/dev/null; then
