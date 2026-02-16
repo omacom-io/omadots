@@ -64,8 +64,8 @@ lip() {
   pgrep -af "ssh.*-L [0-9]+:localhost:[0-9]+" || echo "No active forwards"
 }
 
-# Create a dev layout using tmux with editor, ai, and terminal
-tdev() {
+# Create a tmux layout for dev with editor, ai, and terminal
+tml() {
   local current_dir="${PWD}"
   local editor_pane ai_pane
   local ai="$1"
@@ -94,10 +94,10 @@ tdev() {
 
 # Create a dev layout using tmux with editor, opencode, and terminal
 nic() {
-  tdev c
+  tml c
 }
 
 # Create a dev layout using tmux with editor, claude, and terminal
 nicx() {
-  tdev cx
+  tml cx
 }
