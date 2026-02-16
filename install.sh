@@ -48,7 +48,6 @@ if [[ -z "$GIT_NAME" ]]; then
   printf "Git name: "
   read -r GIT_NAME </dev/tty
   git config --global user.name "$GIT_NAME"
-  echo "✓ Git name set"
 else
   echo "✓ Git name"
 fi
@@ -58,7 +57,6 @@ if [[ -z "$GIT_EMAIL" ]]; then
   printf "Git email: "
   read -r GIT_EMAIL </dev/tty
   git config --global user.email "$GIT_EMAIL"
-  echo "✓ Git email set"
 else
   echo "✓ Git email"
 fi
