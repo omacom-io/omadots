@@ -42,21 +42,19 @@ bash)
   ;;
 esac
 
-section "Configuring git credentials..."
-GIT_NAME="$(git config --global user.name 2>/dev/null || true)"
-if [[ -z "$GIT_NAME" ]]; then
+section "Configuring git access..."
+if ! git config --global user.name &>/dev/null; then
   printf "Git name: "
   read -r GIT_NAME </dev/tty
   git config --global user.name "$GIT_NAME"
 else
-  echo "✓ Git name"
+  echo "✓ Git name already set"
 fi
 
-GIT_EMAIL="$(git config --global user.email 2>/dev/null || true)"
-if [[ -z "$GIT_EMAIL" ]]; then
+if ! git config --global user.email &>/dev/null; then
   printf "Git email: "
   read -r GIT_EMAIL </dev/tty
   git config --global user.email "$GIT_EMAIL"
 else
-  echo "✓ Git email"
+  echo "✓ Git email already set"
 fi
