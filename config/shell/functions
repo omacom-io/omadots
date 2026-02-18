@@ -66,6 +66,11 @@ lip() {
 
 # Create a tmux layout for dev with editor, ai, and terminal
 tml() {
+  if [[ -z $TMUX ]]; then
+    tmux new-session "$SHELL -ic 'tml $1; exec $SHELL'"
+    return
+  fi
+
   local current_dir="${PWD}"
   local editor_pane ai_pane
   local ai="$1"
