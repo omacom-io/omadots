@@ -4,7 +4,7 @@ alias lsa='ls -a'
 
 # Fuzzy find (https://junegunn.github.io/fzf/)
 alias ff="fzf --preview 'bat --style=numbers --color=always {}'"
-alias eff='$EDITOR $(ff)'
+alias eff='$EDITOR "$(ff)"'
 
 # Smart cd (https://github.com/ajeetdsouza/zoxide)
 alias cd="zd"
