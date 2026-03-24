@@ -263,11 +263,6 @@ gd() {
 
 # Set git user.name and user.email
 git-id() {
-  printf "Git name: "
-  read -r GIT_NAME
-  git config --global user.name "$GIT_NAME"
-
-  printf "Git email: "
-  read -r GIT_EMAIL
-  git config --global user.email "$GIT_EMAIL"
+  git config --global user.name "$(gum input --placeholder 'Name' --header 'Git name')"
+  git config --global user.email "$(gum input --placeholder 'Email' --header 'Git email')"
 }
