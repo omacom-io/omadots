@@ -40,3 +40,7 @@ n() { if [[ $# -eq 0 ]]; then nvim .; else nvim "$@"; fi; }
 alias g='git'
 alias gcm='git commit -m'
 alias gcam='git commit -a -m'
+
+# NPM & Bun Updates
+alias ncu='npx -y npm-check-updates --interactive --format group --packageManager npm'
+alias bcu='bunx -y npm-check-updates --interactive --format group --packageManager bun'

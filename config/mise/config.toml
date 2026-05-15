@@ -3,4 +3,7 @@ _.path = "{{ cwd }}/bin"
 
 [settings]
 experimental = true
-idiomatic_version_file_enable_tools = ["ruby"]
+idiomatic_version_file_enable_tools = ["ruby", "node"]
+
+[tools]
+node = "24"

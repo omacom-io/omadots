@@ -1,0 +1,6 @@
+window-theme = auto
+theme = dark:GitHub Dark Default,light:GitHub Light Default
+clipboard-paste-protection = false
+macos-titlebar-style = tabs
+window-decoration = true
+confirm-close-surface = false
